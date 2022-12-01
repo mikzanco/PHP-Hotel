@@ -39,7 +39,7 @@
         ],
 
     ];
-
+    var_dump($hotels);
 ?>
 
 
