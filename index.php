@@ -39,7 +39,9 @@
         ],
 
     ];
+
     var_dump($hotels);
+    var_dump(array_keys($hotels[1]))
 ?>
 
 
@@ -61,36 +63,37 @@
         <h1>Hotel List</h1>
     </header>
     <main>
+    
+    <?php foreach ($hotels as $hotelClass) {
+                        foreach($hotelClass as $hotel) {
+                        echo ", $hotel";
+                }
+            }
+        ?>
+
+
     <table class="table table-striped">
         <thead>
-            <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Descrizione</th>
-            <th scope="col">Parcheggio</th>
-            <th scope="col">Stelle</th>
-            <th scope="col">Distanza dal centro</th>
+            
             </tr>
         </thead>
         <tbody>
             <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+
+                
             </tr>
             <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>@mdo</td>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+                <td>@mdo</td>
             </tr>
             <tr>
-            <th scope="row">3</th>
-            <td >Larry the Bird</td>
-            <td>@twitter</td>
-            <td>@mdo</td>
+                <th scope="row">3</th>
+                <td >Larry the Bird</td>
+                <td>@twitter</td>
+                <td>@mdo</td>
             </tr>
         </tbody>
     </table>
