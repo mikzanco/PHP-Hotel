@@ -40,8 +40,8 @@
 
     ];
 
-    var_dump($hotels);
-    var_dump(array_keys($hotels[1]))
+    var_dump($hotels [0]);
+    var_dump(array_keys($hotels[0]));
 ?>
 
 
@@ -64,36 +64,44 @@
     </header>
     <main>
     
-    <?php foreach ($hotels as $hotelClass) {
-                        foreach($hotelClass as $hotel) {
-                        echo ", $hotel";
-                }
-            }
-        ?>
+    
 
 
     <table class="table table-striped">
         <thead>
-            
+            <tr>
+                <th>Nome</th>
+                <th>Descrizione</th>
+                <th>Parcheggio</th>
+                <th>Voto</th>
+                <th>Distanza dal centro</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-
-                
+                <?php foreach($hotels[0] as $hotel) 
+                    echo '<th>' . $hotel . '</th>'
+                ?>
             </tr>
             <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@mdo</td>
+                <?php foreach($hotels[1] as $hotel) 
+                    echo '<th>' . $hotel . '</th>'
+                ?>
             </tr>
             <tr>
-                <th scope="row">3</th>
-                <td >Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@mdo</td>
+                <?php foreach($hotels[2] as $hotel) 
+                    echo '<th>' . $hotel . '</th>'
+                ?>
+            </tr>
+            <tr>
+                <?php foreach($hotels[3] as $hotel) 
+                    echo '<th>' . $hotel . '</th>'
+                ?>
+            </tr>
+            <tr>
+                <?php foreach($hotels[5] as $hotel) 
+                    echo '<th>' . $hotel . '</th>'
+                ?>
             </tr>
         </tbody>
     </table>
