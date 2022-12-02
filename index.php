@@ -44,9 +44,43 @@
     var_dump($hotels [0]);
     var_dump(array_keys($hotels[0]));
     
+    // foreach($hotel as $key => $value){
+    //     if($key === 'parking' && $value === true) $value = 'Si';
+    //     else if($key === 'parking' && $value === false) $value = 'No';
 
+    // }
 
-    echo $hotel ['parking'] ? 'Si' : 'N0';
+    $filteredhotels = $hotels;
+
+        // verifico se è presente il dato in $_GET['parking']
+        // if(isset($_GET['parking']) && $_GET['parking'] == 1) sono uguali a quella sotto ma quella è più corta
+        if(!empty($_GET['parking'])){
+            // faccio un array temporaneo dove salvare l'array filtarto
+            $temp_hotels = [];
+
+            foreach($filteredhotels as $hotel){
+                if($hotel['parking']) $temp_hotels[] = $hotel;
+            }
+            // sostituire il $filteredhotels con l'array $temp_hotels
+            $filteredhotels = $temp_hotels;
+        };
+        if(!empty($_GET['vote'])){
+            // faccio un array temporaneo dove salvare l'array filtarto
+            $temp_hotels = [];
+
+            foreach($filteredhotels as $hotel){
+                // §puschio l'elemnto se il voto è >= di quello che mi arriva in GET
+                if($hotel['vote'] >= $_GET['vote']) $temp_hotels[] = $hotel;
+            }
+            // sostituire il $filteredhotels con l'array $temp_hotels
+            $filteredhotels = $temp_hotels;
+        };
+
+        // if(!empty($_GET['star'])){
+        //     if(in_array($_GET['star'], ))
+        // }
+
+        // echo $hotel ['parking'] ? 'Si' : 'N0';
 
 ?>
 
@@ -73,13 +107,13 @@
         <div class="form d-flex">
             <form action="./index.php" method="GET">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="parking" id="parking1" value="" checked>
                     <label class="form-check-label" for="flexRadioDefault1">
                     Senza parcheggio
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" name="parking" id="parking1" value="1">
                     <label class="form-check-label" for="flexRadioDefault2">
                         Con Parcheggio
                     </label>
@@ -113,7 +147,7 @@
             
             </thead>
             <tbody>
-                <?php foreach($hotels as $hotel): ?>
+                <?php foreach($filteredhotels as $hotel): ?>
                     <tr>
                         <td><?php echo $hotel ['name'] ?></td>
                         <td><?php echo $hotel ['description'] ?></td>
