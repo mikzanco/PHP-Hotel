@@ -40,8 +40,14 @@
 
     ];
 
+    var_dump($hotels );
     var_dump($hotels [0]);
     var_dump(array_keys($hotels[0]));
+    
+
+
+    echo $hotel ['parking'] ? 'Si' : 'N0';
+
 ?>
 
 
@@ -64,47 +70,60 @@
     </header>
     <main>
     
+        <div class="form d-flex">
+            <form action="./index.php" method="GET">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                    Senza parcheggio
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Con Parcheggio
+                    </label>
+                </div>
+
+                <select name="star" class="form-select m-2" aria-label="Default select example">
+                    <label for="">Voto</label>
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                </select>
+                <button class="btn btn-primary">SEND</button>
+            </form>
+            
+        </div>
     
 
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Descrizione</th>
-                <th>Parcheggio</th>
-                <th>Voto</th>
-                <th>Distanza dal centro</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <?php foreach($hotels[0] as $hotel) 
-                    echo '<th>' . $hotel . '</th>'
-                ?>
-            </tr>
-            <tr>
-                <?php foreach($hotels[1] as $hotel) 
-                    echo '<th>' . $hotel . '</th>'
-                ?>
-            </tr>
-            <tr>
-                <?php foreach($hotels[2] as $hotel) 
-                    echo '<th>' . $hotel . '</th>'
-                ?>
-            </tr>
-            <tr>
-                <?php foreach($hotels[3] as $hotel) 
-                    echo '<th>' . $hotel . '</th>'
-                ?>
-            </tr>
-            <tr>
-                <?php foreach($hotels[5] as $hotel) 
-                    echo '<th>' . $hotel . '</th>'
-                ?>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Parcheggio</th>
+                    <th>Voto</th>
+                    <th>Distanza dal centro</th>
+                </tr>
+            
+            </thead>
+            <tbody>
+                <?php foreach($hotels as $hotel): ?>
+                    <tr>
+                        <td><?php echo $hotel ['name'] ?></td>
+                        <td><?php echo $hotel ['description'] ?></td>
+                        <td><?php echo $hotel ['parking'] ? 'Si' : 'N0' ?></td>
+                        <td><?php echo $hotel ['vote']?></td>
+                        <td><?php echo $hotel ['distance_to_center'] ?></td>
+                    </tr>
+                <?php endforeach; ?>   
+            </tbody>
+        </table>
     </main>
 </body>
 </html>
